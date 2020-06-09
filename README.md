@@ -1,6 +1,6 @@
 # polybar-bitcoin-wallet
 
-This is a commponent for polybar where you can check the current balance of your bitcoin wallet.
+This is a module for polybar where you can check the current balance of your bitcoin wallet.
 
 ![working sample](https://i.imgur.com/HQiOwUR.jpg)
 
