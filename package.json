@@ -9,7 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.19.2",
-    "cryptocoins-icons": "^2.9.0"
+    "axios": "^0.19.2"
   }
 }
