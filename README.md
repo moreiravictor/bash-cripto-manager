@@ -2,7 +2,7 @@
 
 This is a commponent for polybar where you can check the current balance of your bitcoin wallet.
 
-![working sample](https://imgur.com/HQiOwUR)
+![working sample](https://i.imgur.com/HQiOwUR.jpg)
 
 first, in your polybar folder
 ```bash
@@ -24,5 +24,5 @@ type = custom/script
 interval = 600
 exec = node ~/.config/polybar/polybar-bitcoin-wallet/bitcoin.js
 ```
-Thanks to my dear friend [@itsmaia] and in his words:
+Thanks to my dear friend [@itsmaia](https://github.com/itsmaia) and in his words:
 This is licensed under do whatever you want with it.
