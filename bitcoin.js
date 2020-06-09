@@ -11,7 +11,7 @@ function BTCvalue(satoshi_value) {
 async function getBalance(address) {
     axios.get(address).then( res => {
         const value = res.data[wallet_pk].final_balance;
-        console.log(BTCvalue(value));
+        console.log(`BTC ${BTCvalue(value)}`);
     });
 }
 
