@@ -7,6 +7,8 @@ This is a module for polybar where you can check the current balance of your bit
 first, in your polybar folder
 ```bash
   $ git clone git@github.com:moreiravictor/polybar-bitcoin-wallet.git
+  $ cd polybar-bitcoin-wallet
+  $ npm install
 ```
 Then, put your Bitcoin Wallet public address and icon you want to display on bitcoin.js file  
 
