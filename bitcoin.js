@@ -1,5 +1,5 @@
 const axios = require('axios');
-const wallet_pk = "3GU9DTPj9YVtQwz3KihPhByesDqP1Ywpuc";
+const wallet_pk = "11dcwyCsHw8AB45aHTd9cHUGZVVwR9h41";
 const icon = "฿";
 const address = `https://blockchain.info/balance?active=${wallet_pk}`;
 
@@ -12,6 +12,12 @@ async function getBalance(address) {
     axios.get(address).then( res => {
         const value = res.data[wallet_pk].final_balance;
         console.log(`${icon} ${BTCvalue(value)}`);
+    }).catch(error => {
+        if (error.code === "ENOTFOUND") {
+            console.log("Reconnecting...");
+        } else {
+            console.log("Inform error to mantainer:", error.code);
+        }
     });
 }
 
