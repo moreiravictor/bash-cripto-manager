@@ -16,7 +16,7 @@ async function getBalance(address) {
         if (error.code === "ENOTFOUND") {
             console.log("Reconnecting...");
         } else {
-            console.log("Inform error to mantainer:", error.code);
+            console.log("Inform error to maintainer:", error.code);
         }
     });
 }
