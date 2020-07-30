@@ -13,7 +13,7 @@ first, in your polybar folder
 Then, put your Bitcoin Wallet public address and icon you want to display on bitcoin.js file  
 
 ```javascript
-const wallet_pk = "PUBLIC ADDRESS HERE";
+const wallet_keys = [{PUBLIC ADDRESS HERE}, {PUBLIC ADDRESS HERE}, ...];
 const icon = "YOUR ICON IN UNICODE HERE";
 ```
 In your polybar config file:
