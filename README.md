@@ -1,4 +1,4 @@
-# polybar-bitcoin-wallet
+# polybar-cripto-manager
 
 these are two modules for polybar where you can check the current balance of your bitcoin wallet as well as get current values and yout portfolio percentage. 
 
