@@ -37,6 +37,7 @@ const wallet_keys = [{PUBLIC ADDRESS HERE}, {PUBLIC ADDRESS HERE}, ...];
 const icon = "YOUR ICON IN UNICODE HERE";
 ```
 
+## Finally
 In your polybar config file:
 ```
 ...
