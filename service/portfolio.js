@@ -1,6 +1,6 @@
 const {data, price, round} = require('../commons/dataUtil');
 const {currency, coins, icons} = require('../config/coins');
-const {getFullInfos} = require('../http/service/quotes');
+const {getFullInfos} = require('../http/service/quotesService');
 
 function userTotalCoin(coin) {
     return coins[coin.slug] * price(coin);

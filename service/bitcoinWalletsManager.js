@@ -1,7 +1,5 @@
-const axios = require('axios');
-const wallet_keys = ["1HkdRgdPNVkggHpKtFfsJnNo7Q1akxvTWt", "165wEp4BjiTWAuPcRbfjAwCFs6crUk9Huq"];
+const bwService = require('../http/service/bitcoinWalletsService')
 const icon = "฿";
-const address = `https://blockchain.info/balance?active=${wallet_keys}`;
 
 function BTCvalue(satoshi_values) {
     const satoshi = 100000000;
@@ -19,18 +17,13 @@ function getFinalValues(wallets) {
 }
 
 async function getBalance() {
-    try {
-        const res = await axios.get(address);
+    const res = await bwService.getWalletBalances();
+    if (res === 'ERROR'){
+        return 'Reconnecting...';
+    } else {
         let values = getFinalValues(res.data);
         return `${icon} ${BTCvalue(values)}`;
-    } catch(error) {
-        if (error.code === "ENOTFOUND") {
-            return "Reconnecting...";
-        } else {
-            return "Inform error to maintainer:", error;
-        }
-    } 
-
+    }
 }
 
 module.exports = {getBalance};

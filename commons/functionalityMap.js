@@ -1,5 +1,5 @@
 const {priceAndPercentage, userTotal} = require('../service/portfolio');
-const {getBalance} = require('../service/bitcoin_wallets');
+const {getBalance} = require('../service/bitcoinWalletsManager');
 
 const functionalityMap = Object.freeze({
     '-p': priceAndPercentage,
