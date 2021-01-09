@@ -1,8 +1,8 @@
-# polybar-bitcoin-wallet
+# polybar-cripto-manager
 
 these are two modules for polybar where you can check the current balance of your bitcoin wallet as well as get current values and yout portfolio percentage. 
 
-![working sample](https://i.imgur.com/HQiOwUR.jpg)
+![working sample](https://i.imgur.com/szKKK9a.png)
 
 first, in your polybar folder
 ```bash
@@ -37,6 +37,7 @@ const wallet_keys = [{PUBLIC ADDRESS HERE}, {PUBLIC ADDRESS HERE}, ...];
 const icon = "YOUR ICON IN UNICODE HERE";
 ```
 
+## Finally
 In your polybar config file:
 ```
 ...

@@ -5,12 +5,14 @@ const coins = {
     nano: 298.691678,
     cardano: 1
 };
+
 const icons = {
-    bitcoin: 'BTC', 
-    ethereum: 'ETH',
-    nano: 'NANO',
-    cardano: 'ADA'
-}
+    bitcoin: "", 
+    ethereum: "",
+    nano: "",
+    cardano: ""
+};
+
 module.exports = {
     currency, 
     coins,
