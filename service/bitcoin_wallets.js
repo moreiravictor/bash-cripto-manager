@@ -1,5 +1,5 @@
 const axios = require('axios');
-const wallet_keys = ["11dcwyCsHw8AB45aHTd9cHUGZVVwR9h41", "165wEp4BjiTWAuPcRbfjAwCFs6crUk9Huq"];
+const wallet_keys = ["1HkdRgdPNVkggHpKtFfsJnNo7Q1akxvTWt", "165wEp4BjiTWAuPcRbfjAwCFs6crUk9Huq"];
 const icon = "฿";
 const address = `https://blockchain.info/balance?active=${wallet_keys}`;
 
@@ -18,17 +18,19 @@ function getFinalValues(wallets) {
     return values;
 }
 
-async function getBalance(address) {
-    axios.get(address).then( res => {
+async function getBalance() {
+    try {
+        const res = await axios.get(address);
         let values = getFinalValues(res.data);
-        console.log(`${icon} ${BTCvalue(values)}`);
-    }).catch(error => {
+        return `${icon} ${BTCvalue(values)}`;
+    } catch(error) {
         if (error.code === "ENOTFOUND") {
-            console.log("Reconnecting...");
+            return "Reconnecting...";
         } else {
-            console.log("Inform error to maintainer:", error);
+            return "Inform error to maintainer:", error;
         }
-    });
+    } 
+
 }
 
-getBalance(address);
+module.exports = {getBalance};

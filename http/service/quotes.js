@@ -4,7 +4,11 @@ const currencyHttpBuilder = require('../paramater-builer/currencyHttpBuilder');
 
 async function getFullInfos() {
     const {url, headers} = currencyHttpBuilder.currencyHttpParameters(currency, coins);
-    return await axios.get(url, headers);
+    try {
+        return await axios.get(url, headers);
+    } catch(err) {
+        return {'data': {'data': {}}};
+    }
 }
 
 module.exports = {getFullInfos};
