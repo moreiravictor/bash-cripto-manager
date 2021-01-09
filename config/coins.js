@@ -5,7 +5,16 @@ const coins = {
     nano: 1,
     cardano: 1
 };
+
+const icons = {
+    bitcoin: "", 
+    ethereum: "",
+    nano: "",
+    cardano: ""
+};
+
 module.exports = {
     currency, 
-    coins
+    coins,
+    icons
 };

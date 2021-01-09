@@ -1,5 +1,5 @@
 const dataUtil = require('./commons/dataUtil');
-const {currency, coins} = require('./config/coins');
+const {currency, coins, icons} = require('./config/coins');
 const {getFullInfos} = require('./http/service/quotes');
 
 function userTotal(coin) {
@@ -7,7 +7,7 @@ function userTotal(coin) {
 }
 
 function finalTemplate(coin) {
-    return `${coin.symbol} ${coin.quote[currency].price.toFixed(2)} (${coin.user_percentage.toFixed(2)}%) `;
+    return `${icons[coin.slug]} ${coin.quote[currency].price.toFixed(2)} (${coin.user_percentage.toFixed(2)}%) `;
 }
 
 (async function priceAndPercentage() {
@@ -22,5 +22,3 @@ function finalTemplate(coin) {
     coins_data.forEach( coin => result += finalTemplate(coin));
     console.log(result);
 }());
-
-
