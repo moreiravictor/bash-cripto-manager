@@ -11,14 +11,40 @@ first, in your polybar folder
   $ npm install
 ```
 
-## Untill  now there are two functionalities:
-
-### 1. Portfolio/current values manager:
-Then, put your API key at ./config/general.js
+## Untill  now there are 3 functionalities: 
+* -t (total user values)
+* -p (portfolio)
+* -bw (bitcoin wallets values)
+### The following step is common for the first two:
+Put your API key (generate one at https://pro.coinmarketcap.com) at ./config/general.js
 ```javascript
 const api_key = '{APIKEY}';
 ```
-And finally add the currency you desire as well as the coins and quantity of each one at ./config/coins.js
+
+### 1. Portfolio/current values manager:
+Add the currency you desire as well as the coins, quantity of each one and the icons you want to display at ./config/coins.js
+```javascript
+const currency = 'USD';
+const coins = {
+    bitcoin: 1, 
+    ethereum: 1,
+    nano: 1, 
+    cardano: 1
+};
+const icons = {
+    bitcoin: "", 
+    ethereum: "",
+    nano: "",
+    cardano: ""
+};
+```
+And then use:
+```javascript
+node manager.js -p
+```
+
+### 2. Total user values:
+Add the currency you desire as well as the coins, quantity of each one and the icons you want to display at ./config/coins.js
 ```javascript
 const currency = 'USD';
 const coins = {
@@ -28,13 +54,22 @@ const coins = {
     cardano: 1
 };
 ```
-
-
-### 2. Bitcoin Wallet manager:   
-Then, put your Bitcoin Wallet public address and icon you want to display on bitcoin.js file  
+And then use:
 ```javascript
-const wallet_keys = [{PUBLIC ADDRESS HERE}, {PUBLIC ADDRESS HERE}, ...];
-const icon = "YOUR ICON IN UNICODE HERE";
+node manager.js -t
+```
+
+### 3. Bitcoin Wallet manager:   
+Then, put your Bitcoin Wallet public addresses on ./config/wallets file  
+```javascript
+const wallets = [
+  {PUBLIC ADDRESS HERE}, 
+  {PUBLIC ADDRESS HERE}, 
+  ...];
+```
+And then use:
+```javascript
+node manager.js -bw
 ```
 
 ## Finally
@@ -46,7 +81,7 @@ modules-right = bitcoinwallet
 [module/bitcoinwallet]
 type = custom/script
 interval = 600
-exec = node ~/.config/polybar/polybar-cripto-manager/{FUNCTIONALITY}.js
+exec = node ~/.config/polybar/polybar-cripto-manager/manager.js -{FUNCTIONALITY}
 ```
 Thanks to my dear friend [@itsmaia](https://github.com/itsmaia) and in his words:
 This is licensed under do whatever you want with it.
