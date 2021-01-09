@@ -2,7 +2,7 @@
 
 these are two modules for polybar where you can check the current balance of your bitcoin wallet as well as get current values and yout portfolio percentage. 
 
-![working sample](https://i.imgur.com/HQiOwUR.jpg)
+![working sample](https://i.imgur.com/szKKK9a.png)
 
 first, in your polybar folder
 ```bash
