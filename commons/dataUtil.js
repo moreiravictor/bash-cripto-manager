@@ -1,11 +1,10 @@
-const {currency} = require('../config/coins');
 const {values} = require('./objects');
 
 function data(response) {
     return values(response.data.data);
 }
 
-function price(coin) {
+function price(coin, currency) {
     return coin.quote[currency].price;
 }
 

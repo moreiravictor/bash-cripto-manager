@@ -7,10 +7,10 @@ const coins = {
 };
 
 const icons = {
-    bitcoin: "", 
-    ethereum: "",
-    nano: "",
-    cardano: ""
+    bitcoin: "BTC", 
+    ethereum: "ETH",
+    nano: "NANO",
+    cardano: "ADA"
 };
 
 module.exports = {

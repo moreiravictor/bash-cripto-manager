@@ -13,4 +13,16 @@ function currencyHttpParameters(currency, coins) {
     };
 }
 
-module.exports = {currencyHttpParameters};
+function currencyConvertionHttpParameters(fiat, cripto) {
+    return {
+        url: `${URL}?convert=${fiat}&slug=${cripto}`, 
+        headers: {
+            headers: {'X-CMC_PRO_API_KEY': api_key}
+        }
+    };
+}
+
+module.exports = {
+    currencyHttpParameters,
+    currencyConvertionHttpParameters
+};

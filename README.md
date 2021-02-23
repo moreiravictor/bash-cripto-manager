@@ -15,6 +15,7 @@ first, in your polybar folder
 * -t (total user values)
 * -p (portfolio)
 * -bw (bitcoin wallets values)
+* -c (cripto convertion to fiat)
 ### The following step is common for the first two:
 Put your API key (generate one at https://pro.coinmarketcap.com) at ./config/general.js
 ```javascript
@@ -59,7 +60,24 @@ And then use:
 node manager.js -t
 ```
 
-### 3. Bitcoin Wallet manager:   
+### 3. Amount convertion from critpto to fiat currency:
+Add the currency you desire at ./config/coins.js
+```javascript
+const currency = 'USD';
+const coins = {
+    bitcoin: 1, 
+    ethereum: 1,
+    nano: 1, 
+    cardano: 1
+};
+```
+And then use:
+```javascript
+node manager.js -c {cripto_name} {amount}
+e.g: node manager.js -c bitcoin 0.0034
+```
+
+### 4. Bitcoin Wallet manager:   
 Then, put your Bitcoin Wallet public addresses on ./config/wallets file  
 ```javascript
 const wallets = [

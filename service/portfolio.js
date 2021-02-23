@@ -1,13 +1,13 @@
 const {data, price, round} = require('../commons/dataUtil');
 const {currency, coins, icons} = require('../config/coins');
-const {getFullInfos} = require('../http/service/quotesService');
+const {getFullInfos, getCoinInfos} = require('../http/service/quotesService');
 
 function userTotalCoin(coin) {
-    return coins[coin.slug] * price(coin);
+    return coins[coin.slug] * price(coin, currency);
 }
 
 function finalTemplate(coin) {
-    return `${icons[coin.slug]} ${round(price(coin))} (${round(coin.user_percentage)}%) `;
+    return `${icons[coin.slug]} ${round(price(coin, currency))} (${round(coin.user_percentage)}%) `;
 }
 
 async function priceAndPercentage() {
@@ -32,9 +32,20 @@ async function userTotal() {
     return `${round(user_total)} ${currency}`;
 }
 
+async function convert(options) {
+    const cripto = options[1]
+    const amount = options[2]
+
+    const response = await getCoinInfos(currency, cripto)
+    const coin_data = data(response)[0];
+    const converted = price(coin_data, currency) * amount
+    return `${round(converted)} BRL`
+}
+
 module.exports = {
     priceAndPercentage, 
-    userTotal
+    userTotal,
+    convert
 };
 
 
