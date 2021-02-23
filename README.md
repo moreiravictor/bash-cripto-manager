@@ -73,8 +73,11 @@ const coins = {
 ```
 And then use:
 ```javascript
-node manager.js -c {cripto_name} {amount}
-e.g: node manager.js -c bitcoin 0.0034
+node manager.js -c {cripto_name} {amount} (amount is optional, if you don't type it, you'll receive the amount from the config file)
+e.g: 
+node manager.js -c bitcoin 0.0034 
+or 
+node manager.js -c bitcoin
 ```
 
 ### 4. Bitcoin Wallet manager:   

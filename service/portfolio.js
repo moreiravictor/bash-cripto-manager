@@ -34,7 +34,7 @@ async function userTotal() {
 
 async function convert(options) {
     const cripto = options[1]
-    const amount = options[2]
+    const amount = options[2] || coins[cripto]
 
     const response = await getCoinInfos(currency, cripto)
     const coin_data = data(response)[0];
