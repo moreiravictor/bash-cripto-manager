@@ -36,16 +36,23 @@ async function convert(options) {
     const cripto = options[1]
     const amount = options[2] || coins[cripto]
 
-    const response = await getCoinInfos(currency, cripto)
-    const coin_data = data(response)[0];
-    const converted = price(coin_data, currency) * amount
+    const res = await getCoinInfos(currency, cripto)
+    const converted = price(data(res)[0], currency) * amount
     return `${round(converted)} BRL`
+}
+
+async function quote(options) {
+    const cripto = options[1]
+    const res = await getCoinInfos(currency, cripto);
+    const quoted = price(data(res)[0], currency);
+    return `${round(quoted)} BRL`;
 }
 
 module.exports = {
     priceAndPercentage, 
     userTotal,
-    convert
+    convert,
+    quote
 };
 
 

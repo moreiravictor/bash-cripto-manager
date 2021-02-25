@@ -1,4 +1,4 @@
-const {priceAndPercentage, userTotal, convert} = require('../service/portfolio');
+const {priceAndPercentage, userTotal, convert, quote} = require('../service/portfolio');
 const {getBalance} = require('../service/bitcoinWalletsManager');
 
 const functionalityMap = Object.freeze({
@@ -6,6 +6,7 @@ const functionalityMap = Object.freeze({
     '-bw': getBalance,
     '-t': userTotal,
     '-c': convert,
+    '-q': quote,
     default: () => {return 'option not available'}
 })
 
