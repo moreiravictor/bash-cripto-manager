@@ -1,8 +1,8 @@
 const currency = 'BRL';
 const coins = {
-    bitcoin: 0.4413, 
-    ethereum: 1.096,
-    nano: 298.691678,
+    bitcoin: 1, 
+    ethereum: 1,
+    nano: 1,
     cardano: 1
 };
 
