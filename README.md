@@ -43,6 +43,10 @@ And then use:
 ```javascript
 node manager.js -p
 ```
+If you'd rather see the price variance for the day instead, use:
+```javascript
+node manager.js -vf
+```
 
 ### 2. Total user values:
 Add the currency you desire as well as the coins, quantity of each one and the icons you want to display at ./config/coins.js
