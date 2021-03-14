@@ -106,7 +106,7 @@ modules-right = bitcoinwallet
 [module/bitcoinwallet]
 type = custom/script
 interval = 600
-exec = node ~/.config/polybar/polybar-cripto-manager/manager.js -{FUNCTIONALITY}
+exec = node ~/.config/polybar/polybar-cripto-manager/src/manager.js -{FUNCTIONALITY}
 ```
 Thanks to my dear friend [@itsmaia](https://github.com/itsmaia) and in his words:
 This is licensed under do whatever you want with it.
