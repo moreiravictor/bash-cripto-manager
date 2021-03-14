@@ -7,10 +7,10 @@ const coins = {
 }
 
 const icons = {
-    bitcoin: "BTC", 
-    ethereum: "ETH",
-    nano: "NANO",
-    cardano: "ADA"
+    bitcoin: 'BTC', 
+    ethereum: 'ETH',
+    nano: 'NANO',
+    cardano: 'ADA'
 }
 
 export {

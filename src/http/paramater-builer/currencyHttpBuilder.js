@@ -1,5 +1,5 @@
 import { base_url, api_key } from '../../config/general.js'
-import {keys } from '../../commons/objects.js'
+import { keys } from '../../commons/objects.js'
 
 const URL = `${base_url}/quotes/latest`
 
@@ -10,7 +10,7 @@ function currencyHttpParameters(currency, coins) {
         headers: {
             headers: {'X-CMC_PRO_API_KEY': api_key}
         }
-    };
+    }
 }
 
 function currencyConvertionHttpParameters(fiat, cripto) {

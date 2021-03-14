@@ -1,5 +1,5 @@
 import { getWalletBalances } from '../http/service/bitcoinWalletsService.js'
-const icon = "฿"
+const icon = '฿'
 
 function BTCvalue(satoshi_values) {
     const satoshi = 100000000
