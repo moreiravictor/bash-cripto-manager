@@ -18,12 +18,12 @@ async function priceAndPercentage() {
   const response = await getFullInfos()
   const coinsData = data(response)
 
-  coinsData.forEach((coin) => coin.totalValues = userTotalCoin(coin))
+  coinsData.forEach((coin) => { coin.totalValues = userTotalCoin(coin) })
   const userTotalVal = coinsData.reduce((total, { totalValues }) => total + totalValues, 0)
-  coinsData.forEach(coin => coin.user_percentage = (coin.totalValues/userTotalVal)* 100)
+  coinsData.forEach(coin => { coin.user_percentage = (coin.totalValues / userTotalVal) * 100 })
 
   let result = ''
-  coinsData.forEach((coin) => result += finalTemplate(coin))
+  coinsData.forEach((coin) => { result += finalTemplate(coin) })
   return result
 }
 
@@ -31,7 +31,7 @@ async function userTotal() {
   const response = await getFullInfos()
   const coinsData = data(response)
 
-  coinsData.forEach(coin => coin.totalValues = userTotalCoin(coin))
+  coinsData.forEach((coin) => { coin.totalValues = userTotalCoin(coin) })
   const userTotalVal = coinsData.reduce((total, { totalValues }) => total + totalValues, 0)
   return `${round(userTotalVal)} ${currency}`
 }
@@ -56,11 +56,11 @@ async function getVarianceFlag() {
   const response = await getFullInfos()
   const coinsData = data(response)
 
-  coinsData.map(coin => coin.user_total = userTotalCoin(coin))
-  coinsData.map(coin => coin.variance_flag = varianceFlag(coin, currency))
+  coinsData.forEach((coin) => { coin.user_total = userTotalCoin(coin) })
+  coinsData.forEach((coin) => { coin.variance_flag = varianceFlag(coin, currency) })
 
   let result = ''
-  coinsData.forEach( coin => result += varianceFlagTemplate(coin))
+  coinsData.forEach((coin) => { result += varianceFlagTemplate(coin) })
   return result
 }
 
