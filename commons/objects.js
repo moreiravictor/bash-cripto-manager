@@ -1,11 +1,12 @@
 function values(object) {
-    return Object.values(object);
+    return Object.values(object)
 }
 
 function keys(object) {
-    return Object.keys(object);
+    return Object.keys(object)
 }
 
-module.exports = {
-    values, keys
-};
+export {
+    values, 
+    keys
+}

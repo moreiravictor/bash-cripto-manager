@@ -1,8 +1,8 @@
-const {base_blockchain_url} = require('../../config/general')
-const URL = `${base_blockchain_url}/balance?active=`;
+import { base_blockchain_url } from '../../config/general.js'
+const URL = `${base_blockchain_url}/balance?active=`
 
 function httpBuilder(wallets) {
-    return {url: `${URL}${wallets}`};
+    return {url: `${URL}${wallets}`}
 }
 
-module.exports = {httpBuilder};
+export {httpBuilder}

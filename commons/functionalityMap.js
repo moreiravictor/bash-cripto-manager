@@ -1,5 +1,5 @@
-const {priceAndPercentage, userTotal, convert, quote} = require('../service/portfolio');
-const {getBalance} = require('../service/bitcoinWalletsManager');
+import { priceAndPercentage, userTotal, convert, quote } from '../service/portfolio.js'
+import { getBalance } from '../service/bitcoinWalletsManager.js'
 
 const functionalityMap = Object.freeze({
     '-p': priceAndPercentage,
@@ -10,7 +10,17 @@ const functionalityMap = Object.freeze({
     default: () => {return 'option not available'}
 })
 
-module.exports = {
-    functionalityMap
+function getService(functionality) {
+    return functionalityMap[functionality] || functionalityMap.default
+} 
+
+async function execute(service, options) {
+    const info = await service(options)
+    console.log(info)
+}
+
+export {
+    execute,
+    getService
 }
     

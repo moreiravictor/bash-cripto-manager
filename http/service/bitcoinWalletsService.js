@@ -1,14 +1,14 @@
-const axios = require('axios');
-const {wallets} = require('../../config/wallets');
-const bitcoinWalletsHttpBuilder = require('../paramater-builer/bitcoinWalletsHttpBuilder');
+import axios from 'axios'
+import { wallets } from '../../config/wallets.js'
+import {httpBuilder} from '../paramater-builer/bitcoinWalletsHttpBuilder.js'
 
 async function getWalletBalances() {
-    const {url, headers} = bitcoinWalletsHttpBuilder.httpBuilder(wallets);
+    const {url, headers} = httpBuilder(wallets)
     try {
-        return await axios.get(url, headers);
+        return await axios.get(url, headers)
     } catch(error) {
-        return 'ERROR';
+        return 'ERROR'
     } 
 }
 
-module.exports = {getWalletBalances};
+export {getWalletBalances}

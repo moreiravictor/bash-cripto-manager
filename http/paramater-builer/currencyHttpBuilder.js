@@ -1,10 +1,10 @@
-const {base_url, api_key} = require('../../config/general');
-const {keys} = require('../../commons/objects');
+import { base_url, api_key } from '../../config/general.js'
+import {keys } from '../../commons/objects.js'
 
-const URL = `${base_url}/quotes/latest`;
+const URL = `${base_url}/quotes/latest`
 
 function currencyHttpParameters(currency, coins) {
-    const slugs = keys(coins).reduce((total, current) => `${total},${current}`);
+    const slugs = keys(coins).reduce((total, current) => `${total},${current}`)
     return {
         url: `${URL}?convert=${currency}&slug=${slugs}`, 
         headers: {
@@ -19,10 +19,10 @@ function currencyConvertionHttpParameters(fiat, cripto) {
         headers: {
             headers: {'X-CMC_PRO_API_KEY': api_key}
         }
-    };
+    }
 }
 
-module.exports = {
+export {
     currencyHttpParameters,
     currencyConvertionHttpParameters
-};
+}

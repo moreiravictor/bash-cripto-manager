@@ -1,23 +1,23 @@
-const axios = require('axios');
-const {currency, coins} = require('../../config/coins');
-const {currencyHttpParameters, currencyConvertionHttpParameters} = require('../paramater-builer/currencyHttpBuilder');
+import axios from 'axios'
+import { currency, coins } from '../../config/coins.js'
+import { currencyHttpParameters, currencyConvertionHttpParameters } from '../paramater-builer/currencyHttpBuilder.js'
 
 async function getFullInfos() {
-    const {url, headers} = currencyHttpParameters(currency, coins);
+    const {url, headers} = currencyHttpParameters(currency, coins)
     try {
-        return await axios.get(url, headers);
+        return await axios.get(url, headers)
     } catch(err) {
-        return {'data': {'data': {}}};
+        return {'data': {'data': {}}}
     }
 }
 
 async function getCoinInfos(fiat, cripto) {
-    const {url, headers} = currencyConvertionHttpParameters(fiat, cripto);
-    return await axios.get(url, headers);
+    const {url, headers} = currencyConvertionHttpParameters(fiat, cripto)
+    return await axios.get(url, headers)
 
 }
 
-module.exports = {
+export {
     getFullInfos,
     getCoinInfos
-};
+}

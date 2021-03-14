@@ -3,6 +3,6 @@ const wallets = [
     '1HDWAto9mD4vwZkxE7RZ4nxvgYcA5vJQpG'
 ];
 
-module.exports = {
+export {
     wallets
 }
