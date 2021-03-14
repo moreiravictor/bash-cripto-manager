@@ -8,6 +8,10 @@ function price(coin, currency) {
     return coin.quote[currency].price
 }
 
+function varianceFlag(coin, currency) {
+    return coin.quote[currency].percent_change_24h
+}
+
 function round(num) {
     return num.toFixed(2)
 }
@@ -15,5 +19,6 @@ function round(num) {
 export {
     data,
     price,
-    round
+    round,
+    varianceFlag
 }
