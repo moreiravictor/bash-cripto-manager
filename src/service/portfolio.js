@@ -11,7 +11,7 @@ function finalTemplate(coin) {
 }
 
 function varianceFlagTemplate(coin) {
-    return `${icons[coin.slug]} ${round(price(coin, currency))} (${round(coin.variance_flag)}%) `
+  return `${icons[coin.slug]} ${round(price(coin, currency))} (${round(coin.variance_flag)}%) `
 }
 
 async function priceAndPercentage() {
@@ -53,21 +53,21 @@ async function quote(options) {
 }
 
 async function getVarianceFlag() {
-    const response = await getFullInfos()
-    const coins_data = data(response)
-    
-    coins_data.map(coin => coin.user_total = userTotalCoin(coin))
-    coins_data.map(coin => coin.variance_flag = varianceFlag(coin, currency))
-    
-    let result = ''
-    coins_data.forEach( coin => result += varianceFlagTemplate(coin))
-    return result
+  const response = await getFullInfos()
+  const coinsData = data(response)
+
+  coinsData.map(coin => coin.user_total = userTotalCoin(coin))
+  coinsData.map(coin => coin.variance_flag = varianceFlag(coin, currency))
+
+  let result = ''
+  coinsData.forEach( coin => result += varianceFlagTemplate(coin))
+  return result
 }
 
 export {
-    priceAndPercentage, 
-    userTotal,
-    convert,
-    quote,
-    getVarianceFlag
+  priceAndPercentage,
+  userTotal,
+  convert,
+  quote,
+  getVarianceFlag,
 }

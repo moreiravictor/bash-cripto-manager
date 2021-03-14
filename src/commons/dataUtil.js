@@ -12,5 +12,5 @@ export {
   data,
   price,
   round,
-  varianceFlag
+  varianceFlag,
 }
