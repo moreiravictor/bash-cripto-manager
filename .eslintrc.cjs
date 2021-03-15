@@ -14,5 +14,6 @@ module.exports = {
     semi: ['error', 'never'],
     'import/extensions': ['error', 'always'],
     'object-curly-newline': ['error', { ImportDeclaration: 'never' }],
+    'no-param-reassign': ['error', { props: false }],
   },
 }

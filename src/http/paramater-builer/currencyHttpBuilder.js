@@ -1,5 +1,5 @@
 import { baseUrl, apiKey } from '../../config/general.js'
-import { keys } from '../../commons/objects.js'
+import { keys } from '../../util/objects.js'
 
 const URL = `${baseUrl}/quotes/latest`
 

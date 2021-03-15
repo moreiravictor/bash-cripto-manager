@@ -1,4 +1,4 @@
-import { execute, getService } from './commons/functionalityMap.js'
+import { execute, getService } from './util/functionalityMap.js'
 
 const options = process.argv.slice(2)
 const functionality = options[0]

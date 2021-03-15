@@ -1,4 +1,5 @@
 import getWalletBalances from '../http/service/bitcoinWalletsService.js'
+import { values } from '../util/objects.js'
 
 const icon = '฿'
 
@@ -10,7 +11,7 @@ function BTCvalue(satoshiValues) {
 }
 
 function getFinalValues(wallets) {
-  return Object.values(wallets).map((info) => info.final_balance)
+  return values(wallets).map((info) => info.final_balance)
 }
 
 async function getBalance() {
@@ -18,8 +19,8 @@ async function getBalance() {
   if (res === 'ERROR') {
     return 'Reconnecting...'
   }
-  const values = getFinalValues(res.data)
-  return `${icon} ${BTCvalue(values)}`
+  const finalValues = getFinalValues(res.data)
+  return `${icon} ${BTCvalue(finalValues)}`
 }
 
 export default getBalance

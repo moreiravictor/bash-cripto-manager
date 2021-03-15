@@ -1,67 +1,49 @@
-import { data, price, round, varianceFlag } from '../commons/dataUtil.js'
-import { currency, coins, icons } from '../config/coins.js'
+import { currency, coins } from '../config/coins.js'
 import { getFullInfos, getCoinInfos } from '../http/service/quotesService.js'
-
-function userTotalCoin(coin) {
-  return coins[coin.slug] * price(coin, currency)
-}
-
-function finalTemplate(coin) {
-  return `${icons[coin.slug]} ${round(price(coin, currency))} (${round(coin.user_percentage)}%) `
-}
-
-function varianceFlagTemplate(coin) {
-  return `${icons[coin.slug]} ${round(price(coin, currency))} (${round(coin.variance_flag)}%) `
-}
+import { getUserTotal, price, setCoinsAmount } from '../model/coinsData.js'
+import { percentageTemplate, valueTemplate, varianceFlagTemplate } from '../util/templates.js'
 
 async function priceAndPercentage() {
-  const response = await getFullInfos()
-  const coinsData = data(response)
+  const coinsData = await getFullInfos()
 
-  coinsData.forEach((coin) => { coin.totalValues = userTotalCoin(coin) })
-  const userTotalVal = coinsData.reduce((total, { totalValues }) => total + totalValues, 0)
-  coinsData.forEach(coin => { coin.user_percentage = (coin.totalValues / userTotalVal) * 100 })
+  setCoinsAmount(coinsData)
+  const userTotalAmount = getUserTotal(coinsData)
+  coinsData.forEach((coin) => { coin.userPercentage = (coin.totalAmount / userTotalAmount) * 100 })
 
-  let result = ''
-  coinsData.forEach((coin) => { result += finalTemplate(coin) })
-  return result
+  return percentageTemplate(coinsData)
 }
 
 async function userTotal() {
-  const response = await getFullInfos()
-  const coinsData = data(response)
+  const coinsData = await getFullInfos()
 
-  coinsData.forEach((coin) => { coin.totalValues = userTotalCoin(coin) })
-  const userTotalVal = coinsData.reduce((total, { totalValues }) => total + totalValues, 0)
-  return `${round(userTotalVal)} ${currency}`
+  setCoinsAmount(coinsData)
+  const userTotalVal = getUserTotal(coinsData)
+
+  return valueTemplate(userTotalVal)
 }
 
 async function convert(options) {
   const cripto = options[1]
   const amount = options[2] || coins[cripto]
 
-  const res = await getCoinInfos(currency, cripto)
-  const converted = price(data(res)[0], currency) * amount
-  return `${round(converted)} BRL`
+  const coinData = await getCoinInfos(currency, cripto)
+  const converted = price(coinData[0], currency) * amount
+
+  return valueTemplate(converted)
 }
 
 async function quote(options) {
   const cripto = options[1]
-  const res = await getCoinInfos(currency, cripto)
-  const quoted = price(data(res)[0], currency)
-  return `${round(quoted)} BRL`
+
+  const coinData = await getCoinInfos(currency, cripto)
+
+  const quoted = price(coinData[0], currency)
+  return valueTemplate(quoted)
 }
 
-async function getVarianceFlag() {
-  const response = await getFullInfos()
-  const coinsData = data(response)
-
-  coinsData.forEach((coin) => { coin.user_total = userTotalCoin(coin) })
-  coinsData.forEach((coin) => { coin.variance_flag = varianceFlag(coin, currency) })
-
-  let result = ''
-  coinsData.forEach((coin) => { result += varianceFlagTemplate(coin) })
-  return result
+async function varianceFlag() {
+  const coinsData = await getFullInfos()
+  return varianceFlagTemplate(coinsData)
 }
 
 export {
@@ -69,5 +51,5 @@ export {
   userTotal,
   convert,
   quote,
-  getVarianceFlag,
+  varianceFlag,
 }
