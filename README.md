@@ -4,7 +4,11 @@ these are two modules for polybar where you can check the current balance of you
 
 ![working sample](https://i.imgur.com/szKKK9a.png)
 
-first, in your polybar folder
+First, you need:
+- Node > 14.16.0
+- npm
+
+then, in your polybar folder
 ```bash
   $ git clone git@github.com:moreiravictor/polybar-cripto-manager.git
   $ cd polybar-cripto-manager
