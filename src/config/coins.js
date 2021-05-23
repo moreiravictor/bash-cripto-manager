@@ -1,17 +1,9 @@
-const currency = 'BRL'
-const coins = {
-  bitcoin: 1,
-  ethereum: 1,
-  nano: 1,
-  cardano: 1,
-}
+import fs from 'fs'
+const config = JSON.parse(fs.readFileSync('src/config/config.json'))
 
-const icons = {
-  bitcoin: 'BTC',
-  ethereum: 'ETH',
-  nano: 'NANO',
-  cardano: 'ADA',
-}
+const currency = config.currency
+const coins = config.coins
+const icons = config.icons
 
 export {
   currency,

@@ -1,6 +1,6 @@
-const wallets = [
-  '1HkdRgdPNVkggHpKtFfsJnNo7Q1akxvTWt',
-  '1HDWAto9mD4vwZkxE7RZ4nxvgYcA5vJQpG',
-]
+import fs from 'fs'
+const config = JSON.parse(fs.readFileSync('src/config/config.json'))
+
+const wallets = config.wallets
 
 export default wallets

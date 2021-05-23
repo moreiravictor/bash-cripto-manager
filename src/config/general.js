@@ -1,4 +1,7 @@
-const apiKey = '6b7648ed-f0d0-4f83-82e5-d644ccca8cc5'
+import fs from 'fs'
+const config = JSON.parse(fs.readFileSync('src/config/config.json'))
+
+const apiKey = config.apiKey
 const baseUrl = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency'
 const baseBlockchainUrl = 'https://blockchain.info'
 
