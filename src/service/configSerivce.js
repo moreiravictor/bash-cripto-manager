@@ -1,28 +1,28 @@
 import { getService } from '../util/configMap.js'
 import _ from 'lodash'
 import fs from 'fs'
-import path from 'path'
+import { config, configPath } from '../util/constants.js'
 
-const config = JSON.parse(fs.readFileSync(path.resolve() + '/cripto-manager/src/config/config.json'))
+const configs = config()
 
 function handleConfig(options) {
   const action = getService(options[1])
   const updatedConfig = action(options)
-  fs.writeFileSync(path.resolve() + '/cripto-manager/src/config/config.json', JSON.stringify(updatedConfig))
+  fs.writeFileSync(configPath, JSON.stringify(updatedConfig))
   return updatedConfig
 }
 
 function addCoin(options) {
   const coin = options[2]
   const amount = Number(options[3])
-  const updatedConfig = _.cloneDeep(config)
+  const updatedConfig = _.cloneDeep(configs)
   updatedConfig.coins[coin] = amount
   return updatedConfig
 }
 
 function removeCoin(options) {
   const coin = options[2]
-  const updatedConfig = _.cloneDeep(config)
+  const updatedConfig = _.cloneDeep(configs)
   delete updatedConfig.coins[coin]
   return updatedConfig
 }
@@ -30,28 +30,28 @@ function removeCoin(options) {
 function addIcon(options) {
   const coin = options[2]
   const icon = options[3]
-  const updatedConfig = _.cloneDeep(config)
+  const updatedConfig = _.cloneDeep(configs)
   updatedConfig.icons[coin] = icon
   return updatedConfig
 }
 
 function removeIcon(options) {
   const coin = options[2]
-  const updatedConfig = _.cloneDeep(config)
+  const updatedConfig = _.cloneDeep(configs)
   delete updatedConfig.icons[coin]
   return updatedConfig
 }
 
 function updateApiKey(options) {
   const key = options[2]
-  const updatedConfig = _.cloneDeep(config)
+  const updatedConfig = _.cloneDeep(configs)
   updatedConfig.apiKey = key
   return updatedConfig
 }
 
 function addWallet(options) {
   const newWallet = options[2]
-  const updatedConfig = _.cloneDeep(config)
+  const updatedConfig = _.cloneDeep(configs)
   if (!updatedConfig.wallets.find(wallet => wallet === newWallet)) {
     updatedConfig.wallets.push(newWallet)
   } 
@@ -60,14 +60,14 @@ function addWallet(options) {
 
 function removeWallet(options) {
   const exclusionWallet = options[2]
-  const updatedConfig = _.cloneDeep(config)
+  const updatedConfig = _.cloneDeep(configs)
   updatedConfig.wallets = updatedConfig.wallets.filter(wallet => wallet !== exclusionWallet) 
   return updatedConfig
 }
 
 function updateCurrency(options) {
   const currency = options[2]
-  const updatedConfig = _.cloneDeep(config)
+  const updatedConfig = _.cloneDeep(configs)
   updatedConfig.currency = currency
   return updatedConfig
 }

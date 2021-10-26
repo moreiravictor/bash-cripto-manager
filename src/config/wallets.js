@@ -1,7 +1,5 @@
-import fs from 'fs'
-import path from 'path'
-const config = JSON.parse(fs.readFileSync(path.resolve() + '/cripto-manager/src/config/config.json'))
+import { config } from "../util/constants.js"
 
-const wallets = config.wallets
+const wallets = config().wallets
 
 export default wallets

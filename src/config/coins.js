@@ -1,10 +1,10 @@
-import fs from 'fs'
-import path from 'path'
-const config = JSON.parse(fs.readFileSync(path.resolve() + '/cripto-manager/src/config/config.json'))
+import { config } from "../util/constants.js"
 
-const currency = config.currency
-const coins = config.coins
-const icons = config.icons
+const configs = config()
+
+const currency = configs.currency
+const coins = configs.coins
+const icons = configs.icons
 
 export {
   currency,
