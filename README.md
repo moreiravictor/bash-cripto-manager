@@ -1,21 +1,22 @@
-# polybar-cripto-manager
+# cripto-manager
 
-these are two modules for polybar where you can check the current balance of your bitcoin wallet as well as get current values and yout portfolio percentage. 
+This is a command line app for you to manage your cripto assets.
+You can either use it totally via command line or integrate it with your polybar module!
 
 ![working sample](https://i.imgur.com/szKKK9a.png)
 
 First, you need:
-- Node >= 14.16.0
+- Node >= 12.0.0
 - npm
 
-then, in your polybar folder
+and then
 ```bash
   $ git clone git@github.com:moreiravictor/polybar-cripto-manager.git
-  $ cd polybar-cripto-manager
-  $ npm install
+  $ cd cripto-manager
+  $ npm start
 ```
 
-## Untill  now there are 3 functionalities: 
+## Untill  now there are 4 functionalities: 
 * -t (total user values)
 * -p (portfolio)
 * -bw (bitcoin wallets values)
@@ -45,11 +46,11 @@ const icons = {
 ```
 And then use:
 ```javascript
-node manager.js -p
+cm -p
 ```
 If you'd rather see the price variance for the day instead, use:
 ```javascript
-node manager.js -vf
+cm -vf
 ```
 
 ### 2. Total user values:
@@ -65,7 +66,7 @@ const coins = {
 ```
 And then use:
 ```javascript
-node manager.js -t
+cm -t
 ```
 
 ### 3. Amount convertion from critpto to fiat currency:
@@ -81,11 +82,11 @@ const coins = {
 ```
 And then use:
 ```javascript
-node manager.js -c {cripto_name} {amount} (amount is optional, if you don't type it, you'll receive the amount from the config file)
+cm -c {cripto_name} {amount} (amount is optional, if you don't type it, you'll receive the amount from the config file)
 e.g: 
-node manager.js -c bitcoin 0.0034 
+cm -c bitcoin 0.0034 
 or 
-node manager.js -c bitcoin
+cm -c bitcoin
 ```
 
 ### 4. Bitcoin Wallet manager:   
@@ -98,7 +99,7 @@ const wallets = [
 ```
 And then use:
 ```javascript
-node manager.js -bw
+cm -bw
 ```
 
 ## Finally
@@ -110,7 +111,7 @@ modules-right = bitcoinwallet
 [module/bitcoinwallet]
 type = custom/script
 interval = 600
-exec = node ~/.config/polybar/polybar-cripto-manager/src/manager.js -{FUNCTIONALITY}
+exec = cm -{FUNCTIONALITY}
 ```
 Thanks to my dear friend [@itsmaia](https://github.com/itsmaia) and in his words:
 This is licensed under do whatever you want with it.

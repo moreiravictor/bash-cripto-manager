@@ -1,13 +1,14 @@
 import { getService } from '../util/configMap.js'
 import _ from 'lodash'
 import fs from 'fs'
+import path from 'path'
 
-const config = JSON.parse(fs.readFileSync('src/config/config.json'))
+const config = JSON.parse(fs.readFileSync(path.resolve() + '/cripto-manager/src/config/config.json'))
 
 function handleConfig(options) {
   const action = getService(options[1])
   const updatedConfig = action(options)
-  fs.writeFileSync('src/config/config.json', JSON.stringify(updatedConfig))
+  fs.writeFileSync(path.resolve() + '/cripto-manager/src/config/config.json', JSON.stringify(updatedConfig))
   return updatedConfig
 }
 

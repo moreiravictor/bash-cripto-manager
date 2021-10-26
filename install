@@ -1,0 +1,10 @@
+mkdir -p ~/cripto-manager
+
+cp -r src ~/cripto-manager
+cp package-lock.json ~/cripto-manager
+cp package.json ~/cripto-manager
+
+cd ~/cripto-manager
+
+/usr/bin/env npm ci
+/usr/bin/env npm install -g

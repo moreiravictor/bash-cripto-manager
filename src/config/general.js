@@ -1,5 +1,6 @@
 import fs from 'fs'
-const config = JSON.parse(fs.readFileSync('src/config/config.json'))
+import path from 'path'
+const config = JSON.parse(fs.readFileSync(path.resolve() + '/cripto-manager/src/config/config.json'))
 
 const apiKey = config.apiKey
 const baseUrl = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency'
