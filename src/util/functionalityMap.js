@@ -1,6 +1,7 @@
 import { priceAndPercentage, userTotal, convert, quote, varianceFlag } from '../service/portfolio.js'
 import getBalance from '../service/bitcoinWalletsManager.js'
-import {handleConfig} from '../service/configSerivce.js' 
+import { handleConfig } from '../service/configSerivce.js'
+import help from './help.js'
 
 const functionalityMap = Object.freeze({
   '-p': priceAndPercentage,
@@ -9,6 +10,7 @@ const functionalityMap = Object.freeze({
   '-c': convert,
   '-q': quote,
   '-vf': varianceFlag,
+  '-h': help,
   '-config': handleConfig,
   default: () => 'option not available',
 })
