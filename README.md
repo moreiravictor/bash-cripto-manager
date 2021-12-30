@@ -16,6 +16,8 @@ and then
   $ npm start
 ```
 
+OBS: if you update your configuration via coffig.json file you need to run `npm start` again
+
 ## Untill  now there are 4 functionalities: 
 * -t (total user values)
 * -p (portfolio)
